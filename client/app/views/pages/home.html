@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Study Spots no maps</title>
+    <style>
+    body {
+      margin: 0;
+      padding :0;
+    }
+    .map {
+      position: absolute;
+      top: 10;
+      bottom: 0;
+      width: 70%;
+      height: 80%;
+    }
+    searchBar {
+	position: absolute;
+	left: 1000px;
+	padding-top: 100px;
+    }
+    label {
+   	font-size: 20px;
+   }
+  </style>
+
+</head>
+
+<body>
+    <div>
+	<searchBar>
+		<input id="search" placeholder="Search Here...(code, name, or address)" style="width:300px;height:20px;font-size:16px;" /><br>
+		<input id="ifQuiet" type="checkbox" />Quiet Spots<br>
+		<input id="ifIndoor" type="checkbox"/>If Indoor<br>
+		<input id="ifOutdoor" type="checkbox"/>If Outdoor<br>
+			<div>
+				<display1>
+					<label for="Code">Code:</lable>
+					<label id="displayCode" />
+				</display1>
+			</div>
+			<div>
+				<display2>
+					<label for="Name">Name:</lable>
+					<label id="displayName" />    
+				</display2>
+			</div>
+	</searchBar>
+<div>
+<section class="title-header">
+        <h1 style="color: rgb(52, 58, 64);">Study Spots</h1>
+        <h2 style="color: rgb(52, 58, 64);">Find a place to learn easily.</h2>
+    </section>
+    
+	<div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"></div>
+				<div id='map-popups-js' style='width: 1200px; height: 600px;'></div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

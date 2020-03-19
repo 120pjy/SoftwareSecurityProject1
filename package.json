@@ -1,34 +1,27 @@
 {
-  "name": "web2-nodejs",
+  "name": "studyspotsapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "study spots app for UF",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/web-n/Nodejs.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/web-n/Nodejs/issues"
-  },
-  "homepage": "https://github.com/web-n/Nodejs#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
-    "compression": "^1.7.2",
-    "connect-flash": "^0.1.1",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6",
-    "helmet": "^3.21.3",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "sanitize-html": "^1.18.2",
-    "session-file-store": "^1.2.0"
+    "config": "^3.0.0",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "leaflet-map": "^0.2.1",
+    "leaflet-search": "^2.9.7",
+    "mapbox": "^1.0.0-beta10",
+    "mapbox-gl": "^0.51.0",
+    "mongoose": "^5.3.11",
+    "morgan": "^1.9.1",
+    "nodemailer": "^4.7.0"
   }
 }

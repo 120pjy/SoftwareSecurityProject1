@@ -1,0 +1,23 @@
+<div></div>
+        <section class="spacer"></section>
+		<center><h2>Register below with a ufl.edu email</h2></center>
+        <div class="success-message" ng-if="register.success_message">
+                    {{register.success_message}}
+                    </div>
+                    <div class="error-message" ng-if="register.error_message">
+                    {{register.error_message}}
+                    </div>
+        <div class="login-card"><img src="assets/img/avatar_2x.png" class="profile-img-card">
+            <p class="profile-name-card"> </p>
+            <form name="register.signupForm" ng-submit="register.regUser(regData);">
+                <input class="form-control" type="email" name="email" placeholder="Email address"  ng-model="register.regData.email">
+                <br>
+                <input class="form-control" type="password" name="password" placeholder="Password" ng-model="register.regData.password">
+                <br>
+                    <div class="checkbox">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">I've read and accept the TOS</label></div>
+                    </div><button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Register</button></form><a href="/login" class="forgot-password">Already Signed up? Log in</a></div>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+ 

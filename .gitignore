@@ -1,3 +1,2 @@
-node_modules/
-sessions
-nodejs/sessions
+/node_modules
+/package-lock.json

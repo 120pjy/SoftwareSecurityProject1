@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Study Spots UF</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/FAQ-Frequentlly-Asked-Questions-1.css">
+    <link rel="stylesheet" href="assets/css/FAQ-Frequentlly-Asked-Questions.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
+    <link rel="stylesheet" href="assets/css/Shop-item-1.css">
+    <link rel="stylesheet" href="assets/css/Shop-item.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+    <link rel="stylesheet" href= "https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css">
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+    
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/controllers/userController.js"></script>
+    <script src="app/services/userServices.js"></script>
+    <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/services/authServices.js"></script>
+	
+	<style>
+    body {
+      margin: 0;
+      padding :0;
+    }
+    .map {
+      position: absolute;
+      top: 10;
+      bottom: 0;
+      width: 70%;
+      height: 80%;
+    }
+    searchBar {
+	position: absolute;
+	left: 1000px;
+	padding-top: 100px;
+    }
+    label {
+   	font-size: 20px;
+   }
+  </style>
+
+
+</head>
+
+<body ng-app="userApp" ng-controller="mainCtrl as main">
+	<link rel="shortcut icon" type="assets/img/favicon.ico" href="/favicon.ico"/>
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark">
+    <div class="container"><a href="/" class="navbar-brand text-monospace"><img src="assets/img/logo_205x40.png" /></a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div
+            class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav flex-grow-1 justify-content-end">
+                    <li role="presentation" class="nav-item"><a href="/" class="nav-link active">Home</a></li>
+                <li role="presentation" class="nav-item"><a href="/login" class="nav-link active" ng-if="!main.email">Log In</a></li>
+                <li role="presentation" class="nav-item"><a href="/register" class="nav-link active" ng-if="!main.email">Register</a></li>
+                <li role="presentation" class="nav-item"><a class="nav-link active" ng-if="main.email"> {{main.email}} (<span ng-click="main.logoutUser()">Logout</span>)</a></li>
+                
+            </ul>
+		</div>
+    </div>
+	</nav>
+	<section class="spacer"></section>
+
+<div ng-view></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>
