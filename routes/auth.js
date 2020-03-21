@@ -4,9 +4,14 @@ var path = require('path');
 var fs = require('fs');
 var sanitizeHtml = require('sanitize-html');
 var template = require('../lib/template.js');
+const sqlite3 = require('sqlite3').verbose();
 
-
-
+let db = new sqlite3.Database('./db/userData', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the userData database.');
+});
 
 module.exports = function (passport) {
   router.get('/login', function (request, response) {
@@ -86,8 +91,16 @@ module.exports = function (passport) {
       res.send(pwd_mismatch, {message: 'Passwords mismatch'})
     }
 
-    //push user info into database
+   else {
+      db.run('INSERT INTO user(username, password, email) VALUES(\'' + username + '\', \'' + pwd1 + '\', ' + email + '\');', function(err) {
+        if (err) {
+          return console.error(err.message);
+        }
+      })
+    }
   });
+
+
 
   return router;
 }
