@@ -4,14 +4,8 @@ var path = require('path');
 var fs = require('fs');
 var sanitizeHtml = require('sanitize-html');
 var template = require('../lib/template.js');
-const sqlite3 = require('sqlite3').verbose();
-
-let db = new sqlite3.Database('./db/userData', (err) => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log('Connected to the userData database.');
-});
+var db = require('../db/db');
+const shortid = require('shortid');
 
 module.exports = function (passport) {
   router.get('/login', function (request, response) {
@@ -63,7 +57,7 @@ module.exports = function (passport) {
         <p><input type="text" name="email" placeholder="email"></p>
         <p><input type="password" name="pwd1" placeholder="password"></p>
         <p><input type="password" name="pwd2" placeholder="password"></p>
-        <p><input type="text name="username" placeholoder="usernname"></p>
+        <p><input type="text" name="username" placeholder="usernname"></p>
         <p>
           <input type="submit" value="login">
         </p>
@@ -78,7 +72,7 @@ module.exports = function (passport) {
     var pwd2=post.pwd2;
     var username=post.username;
 
-    if (pwd1 != pwd2) {
+    if (pwd1 !== pwd2) {
       var pwd_mismatch = template.HTML(title, list, `
         <p> Passwords don't match></p>
         <script>
@@ -92,11 +86,14 @@ module.exports = function (passport) {
     }
 
    else {
-      db.run('INSERT INTO user(username, password, email) VALUES(\'' + username + '\', \'' + pwd1 + '\', ' + email + '\');', function(err) {
-        if (err) {
+      var id = shortid.generate();
+      db.run('INSERT INTO user(id, username, password, email) VALUES(\'' + id + '\', \'' + username + '\', ' + pwd1 + '\', ' + email + '\');', function(err) {
+        if (err) { 
           return console.error(err.message);
         }
       })
+      req.login();  
+      res.redirect('/')
     }
   });
 
