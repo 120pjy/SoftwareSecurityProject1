@@ -5,6 +5,8 @@ var fs = require('fs');
 var sanitizeHtml = require('sanitize-html');
 var template = require('../lib/template.js');
 var db = require('../db/db');
+const bcrypt = require('bcrypt');
+
 
 module.exports = function (passport) {
   router.get('/login', function (request, response) {
@@ -84,17 +86,25 @@ module.exports = function (passport) {
       res.send(pwd_mismatch, {message: 'Passwords mismatch'})
     }
 
-  // Database now stores logins correctly
+  // Database now stores logins correctly with hashed password
    else {
-      db.run("INSERT INTO user(username, password, email) VALUES('" +username+ "', '" +pwd1+ "', '" +email+ "');", function(err) {
-        if (err) { 
-          return console.error(err.message);
-        }
-      })
-      //req.login();  
-      res.redirect('/')
-    }
-  });
+	   bcrypt.hash(pwd1, 10, function(err, hash){
+		   //console.log(`Hash: ${hash}`);
+		   // Store hash in your password DB.
+		   db.run("INSERT INTO user(username, password, email) VALUES('" +username+ "', '" +hash+ "', '" +email+ "');", function(err) {
+			if (err) { 
+			return console.error(err.message);
+			}
+		})
+		});
+		   // Store hash in your password DB.
+	   
+	  //req.login();  
+	  res.redirect('/')
+		}
+			   
+   });
+
 
 
 
