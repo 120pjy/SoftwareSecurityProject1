@@ -63,7 +63,7 @@ module.exports = function (passport) {
         <p><input type="text" name="email" placeholder="email"></p>
         <p><input type="password" name="pwd1" placeholder="password"></p>
         <p><input type="password" name="pwd2" placeholder="password"></p>
-        <p><input type="text name="username" placeholoder="usernname"></p>
+        <p><input type="text" name="username" placeholoder="usernname"></p>
         <p>
           <input type="submit" value="login">
         </p>
@@ -92,7 +92,7 @@ module.exports = function (passport) {
     }
 
    else {
-      db.run('INSERT INTO user(username, password, email) VALUES(\'' + username + '\', \'' + pwd1 + '\', ' + email + '\');', function(err) {
+      db.run("INSERT INTO user(username, password, email) VALUES('" +username+"', '" + pwd1 + "', '" + email + "');", function(err) {
         if (err) {
           return console.error(err.message);
         }
