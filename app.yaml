@@ -1,3 +1,2 @@
 # [Start app_yaml]
-runtime: nodejs
-vm: true
+runtime: nodejs10
