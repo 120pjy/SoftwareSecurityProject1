@@ -88,7 +88,7 @@ module.exports = function (passport) {
 
   // Database now stores logins correctly with hashed password
    else {
-	   bcrypt.hash(pwd1, 10, function(err, hash){
+	   bcrypt.hash('^pep@'+pwd1, 10, function(err, hash){
 		   //console.log(`Hash: ${hash}`);
 		   // Store hash in your password DB.
 		   db.run("INSERT INTO user(username, password, email) VALUES('" +username+ "', '" +hash+ "', '" +email+ "');", function(err) {
@@ -97,7 +97,6 @@ module.exports = function (passport) {
 			}
 		})
 		});
-		   // Store hash in your password DB.
 	   
 	  //req.login();  
 	  res.redirect('/')
