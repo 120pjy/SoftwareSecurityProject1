@@ -8,7 +8,7 @@ app.use(helmet());
 var session = require('express-session')
 var FileStore = require('session-file-store')(session)
 var flash = require('connect-flash');
-var db = rquire('db/db');
+var db = require('db/db');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
