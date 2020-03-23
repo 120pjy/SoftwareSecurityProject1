@@ -8,7 +8,6 @@ app.use(helmet());
 var session = require('express-session')
 var FileStore = require('session-file-store')(session)
 var flash = require('connect-flash');
-var db = rquire('db/db');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -48,7 +47,6 @@ app.use(function (err, req, res, next) {
   console.error(err.stack)
   res.status(500).send('Something broke!')
 });
-db.run('CREATE IF NOT EXIST user(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE, email TEXT NOT NULL UNIQUIE, password TEXT NOT NULL');
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 });
