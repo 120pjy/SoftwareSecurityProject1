@@ -47,6 +47,6 @@ app.use(function (err, req, res, next) {
   console.error(err.stack)
   res.status(500).send('Something broke!')
 });
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!')
 });

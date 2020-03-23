@@ -66,24 +66,16 @@ module.exports = function (passport) {
     `, '');
     response.send(html);
   });
-  router.post('/register_process', function(req, res) {
-    var post=req.body;
+  router.post('/register_process', function(request, response) {
+    var post=request.body;
     var email=post.email;
     var pwd1=post.pwd1;
     var pwd2=post.pwd2;
     var username=post.username;
 
     if (pwd1 !== pwd2) {
-      var pwd_mismatch = template.HTML(title, list, `
-        <p> Passwords don't match></p>
-        <script>
-          setTimeout(function() {
-            //after 5 seconds
-            window.location = "/register";
-          }, 5000)
-        </script>
-      `)
-      res.send(pwd_mismatch, {message: 'Passwords mismatch'})
+      request.flash('error', 'Passwords must be same!');
+      response.redirect('/auth/register');
     }
 
   // Database now stores logins correctly with hashed password
@@ -99,7 +91,7 @@ module.exports = function (passport) {
 		});
 	   
 	  //req.login();  
-	  res.redirect('/')
+	  response.redirect('/')
 		}
 			   
    });
