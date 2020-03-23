@@ -1,3 +1,2 @@
 # [Start app_yaml]
-runtime: nodejs10env: flex
 runtime: nodejs
