@@ -23,7 +23,7 @@ module.exports = function (passport) {
         <p><input type="text" name="email" placeholder="email"></p>
         <p><input type="password" name="pwd" placeholder="password"></p>
         <p>
-          <input type="submit" value="login">
+          <input type="submit" value="register">
         </p>
       </form>
     `, '');
@@ -97,7 +97,6 @@ module.exports = function (passport) {
 			}
 		})
 		});
-		   // Store hash in your password DB.
 	   
 	  //req.login();  
 	  res.redirect('/')
